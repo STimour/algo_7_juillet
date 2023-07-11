@@ -3,6 +3,8 @@ import { barre } from "./barre";
 import { exo_algo_1 } from "./exo_algo_1";
 import { exo_algo_2 } from "./exo_algo_2";
 import { exo_algo_3 } from "./exo_algo_3"
+import { brief_2_deb } from "./brief_2_debutant";
+
 
 exo_algo_1();
 
@@ -15,6 +17,11 @@ barre();
 exo_algo_3(800, 2);
 exo_algo_3(20, 2);
 exo_algo_3(800, 5);
+
+barre();
+
+brief_2_deb();
+
 
 
 
