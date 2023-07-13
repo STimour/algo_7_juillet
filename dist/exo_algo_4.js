@@ -3,13 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.exo_algo_4 = void 0;
 const exo_algo_4 = () => {
     const candidats = ["lepeigne", "melangeons", "macreau", "varousselle", "paicvaissrelle", "poutoutout", "hidalgogo"];
-    const votes = Array(7).fill(0);
+    const votes = Array(candidats.length).fill(0);
+    const nb_votes_total = 1000;
     const candidats_votes = {};
     let nb_votes = 0;
-    while (nb_votes < 1000) {
+    let pourcentage_moyen = nb_votes_total / votes.length;
+    for (let index = 0; index < nb_votes_total; index++) {
         let vote_all = Math.floor(Math.random() * candidats.length);
         votes[vote_all] += 1;
-        nb_votes += 1;
     }
     for (let i = 0; i < candidats.length; i++) {
         const key = candidats[i];
@@ -20,12 +21,26 @@ const exo_algo_4 = () => {
     for (const [key, value] of Object.entries(candidats_votes)) {
         console.log(`Candidat: ${key} - nombre de votes : ${value}`);
     }
-    console.log(votes);
+    //console.log(votes);
     // 1.b 
-    let vote_max = Object.keys(candidats_votes).reduce((a, b) => candidats_votes[a] > candidats_votes[b] ? a : b);
-    console.log(`candidat ayant obtenu plus de vote : ${vote_max}`);
-    // 1.c
-    let deuxieme_tour = Object.values(candidats_votes);
-    console.log(deuxieme_tour);
+    let vote_max = Object.keys(candidats_votes).reduce((nbVotesMax, candidat) => candidats_votes[candidat] > nbVotesMax ? candidats_votes[candidat] : nbVotesMax, 0);
+    // on trouve le chiffre le plus grand   
+    let vainqueur = Object.keys(candidats_votes).filter((candidat) => candidats_votes[candidat] === vote_max);
+    // on trouve LE candidat associé au chiffre         
+    //const perdant = Object.values(candidats_votes).filter((candidat) => candidats_votes[candidat] != vote_max);
+    let vote_max_perdant;
+    for (let index = 0; index < perdant.length; index++) {
+        vote_max_perdant = Object.keys(perdant).reduce((nbVotesMax, candidat) => perdant[candidat] > nbVotesMax ? perdant[candidat] : nbVotesMax, 0);
+    }
+    let deux_tour = [];
+    deux_tour.push(vote_max, vote_max_perdant);
+    console.log(perdant);
+    console.log("-------------------");
+    console.log(vote_max_perdant);
+    console.log("-------------------");
+    console.log(deux_tour);
+    console.log("-------------------");
+    console.log(`candidat ayant obtenu plus de vote : ${vote_max}`, vainqueur);
+    console.log("-------------------");
 };
 exports.exo_algo_4 = exo_algo_4;
