@@ -1,5 +1,3 @@
-import { table } from "console";
-
 export const exo_algo_2 = () =>{
 
 // 1.
